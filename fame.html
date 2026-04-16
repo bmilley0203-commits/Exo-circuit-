@@ -17,7 +17,7 @@ body {
   background: radial-gradient(circle at top, #0a0f14, #05070a);
   color: white;
   overflow-x: hidden;
-  padding-bottom: 120px;
+  padding-bottom: 120px; /* ✅ bottom spacing */
 }
 
 /* ================= NAVBAR ================= */
@@ -87,7 +87,6 @@ body {
   background: rgba(0,234,255,0.08);
 }
 
-/* highlight Exotic link */
 .nav-links a:last-child {
   border-top: 1px solid rgba(0,234,255,0.2);
   margin-top: 6px;
@@ -117,16 +116,16 @@ body {
   margin-top: 10px;
 }
 
-/* SECTION */
+/* ✅ FIXED SECTION SPACING */
 .section {
-  padding: 0px 20px;
+  padding: 40px 20px; /* ✅ adds space between sections */
   max-width: 1100px;
   margin: auto;
 }
 
 .section h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* ✅ more space under headers */
 
   background: linear-gradient(90deg,#00eaff,#ffffff,#00eaff);
   background-size: 300% 100%;
@@ -227,7 +226,6 @@ body {
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <h2>OLYMPUS</h2>
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -237,81 +235,64 @@ body {
     <a href="schedule.html">Schedule</a>
     <a href="teams.html">Teams</a>
     <a href="fame.html">Hall of Fame</a>
-
-    <!-- NEW LINK -->
     <a href="https://exoticesports.vercel.app/" target="_blank">Exotic Esports</a>
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <h1>HALL OF FAME</h1>
   <p>The greatest to ever compete in Olympus</p>
 </div>
 
-<!-- PLAYERS -->
 <div class="section">
   <h2>Legendary Players</h2>
   <div class="grid">
-
     <div class="card">
       <div class="badge">MVP</div>
       <h3>AceStorm</h3>
       <p>Most kills in a season (38)</p>
     </div>
-
     <div class="card">
       <h3>PhantomX</h3>
       <p>Clutch master — 12 1vX wins</p>
     </div>
-
     <div class="card">
       <h3>NovaCore</h3>
       <p>Highest K/D in Olympus history</p>
     </div>
-
   </div>
 </div>
 
-<!-- TEAMS -->
 <div class="section">
   <h2>Champion Teams</h2>
   <div class="grid">
-
     <div class="card">
       <div class="badge">CHAMPIONS</div>
       <h3>Phantom</h3>
       <p>Season 1 Winners</p>
     </div>
-
     <div class="card">
       <h3>Eclipse</h3>
       <p>Season 2 Finalists</p>
     </div>
-
   </div>
 </div>
 
-<!-- RECORDS -->
 <div class="section">
   <h2>All-Time Records</h2>
   <div class="records">
-
     <div class="record-row">
       <span>Most Kills</span>
       <span>AceStorm (38)</span>
     </div>
-
     <div class="record-row">
       <span>Most Wins</span>
       <span>Phantom (12)</span>
     </div>
-
     <div class="record-row">
       <span>Best K/D</span>
       <span>NovaCore (1.8)</span>
     </div>
-
   </div>
 </div>
 
