@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olympus Hall of Fame</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0a0f14, #05070a);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 26px;
+  position: sticky;
+  top: 0;
+  background: rgba(8,12,16,0.95);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(0,234,255,0.3);
+  z-index: 9999;
+}
+
+.navbar h2 {
+  letter-spacing: 5px;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  background: linear-gradient(90deg,#00eaff,#ffffff,#00eaff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* MENU */
+.menu-toggle {
+  font-size: 26px;
+  cursor: pointer;
+  color: #00eaff;
+}
+
+.nav-links {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  width: 220px;
+  background: rgba(10,15,20,0.95);
+  border-radius: 14px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0,234,255,0.25);
+}
+
+.nav-links.active {
+  display: flex;
+}
+
+.nav-links a {
+  padding: 12px;
+  color: #00eaff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  background: rgba(0,234,255,0.08);
+}
+
+/* highlight Exotic link */
+.nav-links a:last-child {
+  border-top: 1px solid rgba(0,234,255,0.2);
+  margin-top: 6px;
+  padding-top: 14px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+
+  background: linear-gradient(90deg,#00eaff,#ffffff,#00eaff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 4s linear infinite;
+}
+
+.hero p {
+  color: #9aa6ad;
+  margin-top: 10px;
+}
+
+/* SECTION */
+.section {
+  padding: 50px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+
+  background: linear-gradient(90deg,#00eaff,#ffffff,#00eaff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 4s linear infinite;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* CARDS */
+.card {
+  background: linear-gradient(135deg, rgba(0,234,255,0.12), rgba(0,0,0,0.85));
+  border: 1px solid rgba(0,234,255,0.25);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0,234,255,0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -120%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 40px rgba(0,234,255,0.35);
+}
+
+.card h3 {
+  color: #00eaff;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #9aa6ad;
+  font-size: 14px;
+}
+
+/* BADGE */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #00eaff;
+  color: black;
+  font-weight: bold;
+}
+
+/* RECORDS */
+.records {
+  background: rgba(20,20,20,0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(0,234,255,0.2);
+}
+
+.record-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,234,255,0.1);
+}
+
+.record-row span:first-child {
+  color: #00eaff;
+}
+
+.record-row span:last-child {
+  color: #9aa6ad;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <h2>OLYMPUS</h2>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="teams.html">Teams</a>
+    <a href="fame.html">Hall of Fame</a>
+
+    <!-- NEW LINK -->
+    <a href="https://exoticesports.vercel.app/" target="_blank">Exotic Esports</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>HALL OF FAME</h1>
+  <p>The greatest to ever compete in Olympus</p>
+</div>
+
+<!-- PLAYERS -->
+<div class="section">
+  <h2>Legendary Players</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="badge">MVP</div>
+      <h3>AceStorm</h3>
+      <p>Most kills in a season (38)</p>
+    </div>
+
+    <div class="card">
+      <h3>PhantomX</h3>
+      <p>Clutch master — 12 1vX wins</p>
+    </div>
+
+    <div class="card">
+      <h3>NovaCore</h3>
+      <p>Highest K/D in Olympus history</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- TEAMS -->
+<div class="section">
+  <h2>Champion Teams</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="badge">CHAMPIONS</div>
+      <h3>Phantom</h3>
+      <p>Season 1 Winners</p>
+    </div>
+
+    <div class="card">
+      <h3>Eclipse</h3>
+      <p>Season 2 Finalists</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- RECORDS -->
+<div class="section">
+  <h2>All-Time Records</h2>
+  <div class="records">
+
+    <div class="record-row">
+      <span>Most Kills</span>
+      <span>AceStorm (38)</span>
+    </div>
+
+    <div class="record-row">
+      <span>Most Wins</span>
+      <span>Phantom (12)</span>
+    </div>
+
+    <div class="record-row">
+      <span>Best K/D</span>
+      <span>NovaCore (1.8)</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
